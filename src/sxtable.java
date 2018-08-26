@@ -1,0 +1,87 @@
+import java.util.Scanner;
+class DATA{ //节点数据结构
+ String Key;
+ String Name;
+ int Age;
+
+}
+class SLType {  //顺序表类型
+	static final int MAXLEN = 100;
+	DATA[] ListData = new DATA[MAXLEN + 1];//ListData 存储数据节点
+	int ListLen;//已存节点数量
+
+	//初始化
+	void SLInit(SLType SL) {
+
+		SL.ListLen = 0;
+
+	}
+
+	//插入
+	int SLInsert(SLType SL, int n, DATA data) {
+		if (SL.ListLen <= SL.MAXLEN) {//考虑表长度不越界
+			if (n >= 1 || n <= MAXLEN ) {//考虑插入的节点的校验
+				for (int i = SL.ListLen ; i > n ; i--) {
+					SL.ListData[i + 1] = SL.ListData[i];
+
+				}
+				SL.ListData[n] = data;
+				SL.ListLen++;
+				return 1;
+			} else {
+				System.out.println("插入节点坐标错误");
+				return 0;
+			}
+
+		} else {
+			System.out.print("顺序表已经满了");
+			return 0;
+		}
+	}
+
+	void SLAdd(SLType SL, DATA data) {
+		if (SL.ListLen > SLType.MAXLEN) {
+			System.out.println("顺序表越界");
+
+		}
+		SL.ListData[SL.ListLen + 1] = data;
+		SL.ListLen++;
+		//return SL;
+	}
+
+	void SLlistAll(SLType SL) {
+		for (int i = 1; i <=SL.ListLen; i++) {
+			System.out.println("success");
+			System.out.printf("(%s,%s,%d)\n", SL.ListData[i].Key, SL.ListData[i].Name, SL.ListData[i].Age);
+			//return 0;
+		}
+	}
+}
+//以上定义节点类型和顺序表类型，顺序表类型中定义了一系列方法和成员变量
+	public class sxtable{
+		public static void main(String[] args) {
+			//	int i;
+			//定义顺序表
+			SLType SL = new SLType();
+			//定义节点引用变量
+			DATA somedata;
+			//初始化
+			SL.SLInit(SL);
+			//添加节点
+			//定义节点对象
+			DATA sdata = new DATA();
+			sdata.Key = "imp";
+			sdata.Name = "sunzhen";
+			sdata.Age = 23;
+			SL.SLAdd(SL, sdata);
+			//插入节点
+			//显示所有节点
+			//System.out.println(SL.ListData[1].Age);
+			System.out.println("输出全部节点");
+			SL.SLlistAll(SL);
+
+		}
+
+	}
+
+
