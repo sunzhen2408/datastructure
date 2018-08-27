@@ -1,11 +1,9 @@
 import com.sun.xml.internal.bind.v2.model.core.NonElement;
-
 import java.util.Scanner;
 class DATA{ //节点数据结构
  String Key;
  String Name;
  int Age;
-
 }
 class SLType {  //顺序表类型
 	static final int MAXLEN = 100;
